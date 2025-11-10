@@ -1,4 +1,4 @@
-# [Nome do Projeto - ex: DailyDecide ou AIBriefing]
+# [SaaS de Insights Diários com IA para ERPs]
 
 ![Status: Em Desenvolvimento](https://img.shields.io/badge/status-em__desenvolvimento-yellow)
 ![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue.svg)
