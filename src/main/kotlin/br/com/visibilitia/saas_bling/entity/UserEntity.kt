@@ -14,7 +14,7 @@ import java.time.Instant
 data class UserEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    val id: String,
+    val id: String?,
 
     val name: String,
 
