@@ -1,6 +1,7 @@
 package br.com.visibilitia.saas_bling.service
 
 import br.com.visibilitia.saas_bling.dto.RegisterDTO
+import br.com.visibilitia.saas_bling.dto.RegisterResponseDTO
 import br.com.visibilitia.saas_bling.entity.UserEntity
 import br.com.visibilitia.saas_bling.mapper.UserMapper
 import br.com.visibilitia.saas_bling.repository.UserRepository
@@ -13,7 +14,7 @@ class UserService(
     private val passwordEncoder: PasswordEncoder,
     private val userMapper: UserMapper
 ) {
-    fun createUser(payload: RegisterDTO): UserEntity {
+    fun createUser(payload: RegisterDTO): RegisterResponseDTO {
         // Implementation for creating a user
         if (userRepository.findByEmail(payload.email) != null) {
             throw IllegalArgumentException("Email already in use")
@@ -23,6 +24,10 @@ class UserService(
         val userEntity = with(userMapper) {
             payload.toEntity(hashedPassword)
         }
-        return userRepository.save(userEntity)
+
+        val user = userRepository.save(userEntity)
+        return with(userMapper) {
+            user.toResponseDTO()
+        }
     }
 }
